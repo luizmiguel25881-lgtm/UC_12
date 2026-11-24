@@ -1,0 +1,224 @@
+@media (max-width: 900px) {
+
+  html, body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+  button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+
+  /* ---------- Estrutura: topo + conteúdo + barra inferior ---------- */
+  .layout { display: flex; flex-direction: column; min-height: 100vh; }
+  .sidebar { display: contents; }
+  .user { order: 1; }
+  .main { order: 2; flex: 1; padding: 14px 16px 24px; }
+  .sidebar .bottom { order: 3; }
+
+  /* Cabeçalho com o usuário */
+  .user,
+  body.empresa .user {
+    background: var(--sidebar);
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    color: #fff;
+  }
+  .user .bell { order: 3; margin-left: auto; color: #fff; width: 26px; height: 26px; }
+  .user > svg:not(.bell) { width: 32px; height: 32px; }
+  .user > svg:last-child:not(.bell) { display: none; }
+  .user .name { font-size: 26px; }
+  body.empresa .user small { font-size: 12px; }
+
+  /* Barra de navegação fixa embaixo */
+  .nav,
+  body.empresa .nav {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 40;
+    margin: 0;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 2px;
+    padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
+    background: var(--sidebar);
+    box-shadow: 0 -4px 14px rgba(0, 0, 0, .25);
+  }
+  .nav > a,
+  .nav > button,
+  body.empresa .nav > a,
+  body.empresa .nav > button {
+    flex: 1 1 0;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    padding: 8px 2px;
+    font-size: 12px;
+    line-height: 1.15;
+    text-align: center;
+    color: #fff;
+    background: none;
+    border-radius: 10px;
+  }
+  .nav > a.active { background: var(--sidebar-active); }
+  .nav svg,
+  body.empresa .nav a svg,
+  body.empresa .nav button svg { width: 26px; height: 26px; stroke: #fff; }
+
+  /* Rodapé (config + área da empresa) */
+  .sidebar .bottom {
+    margin: 0;
+    padding: 10px 16px calc(84px + env(safe-area-inset-bottom));
+    gap: 10px;
+  }
+  .empresa-link { background: var(--sidebar); color: #fff; margin: 0; align-self: center; }
+  .sidebar .settings { width: 44px; height: 44px; }
+
+  /* ---------- Topo do conteúdo ---------- */
+  .topbar { flex-wrap: wrap; gap: 10px; min-height: 0; }
+  .topbar > a, .topbar > img.logo { order: 1; margin-left: auto; }
+  .search { order: 2; flex: 1 1 100%; max-width: none; margin-left: 0; }
+  .search input { height: 46px; font-size: 16px; }
+  .search input::placeholder { color: #777; }
+  img.logo, .logo { width: 120px; }
+  .e-logo-box { order: 0; }
+
+  .page-title { font-size: 38px; margin-top: 14px !important; }
+
+  /* ---------- Home ---------- */
+  .hero h1 { margin-top: 20px; }
+  .hero h1 span { color: var(--blue); display: block; }
+  .hero .lead { font-size: 20px; }
+  .hero .sub { font-size: 16px; }
+  .cta { flex-direction: column; gap: 12px; margin-top: 26px; }
+  .cta .btn { width: 100%; }
+  .hero-img { margin-top: 22px; }
+  .hero { padding-bottom: 10px; }
+  .section-title { margin-top: 36px; font-size: 34px; }
+  .cards { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .card { padding: 16px; }
+  .card h3 { font-size: 16px; }
+  .card p { font-size: 13px; }
+
+  /* ---------- Stepper compacto ---------- */
+  .stepper { margin-top: 20px; }
+  .circle { width: 34px; height: 34px; font-size: 20px; border-width: 3px; }
+  .step a, .step span.s { gap: 6px; }
+  .step .label { font-size: 9px; letter-spacing: -.2px; overflow-wrap: normal; word-break: normal; hyphens: none; padding: 0; }
+  .step:not(:last-child)::after {
+    top: 17px; left: calc(50% + 21px); width: calc(100% - 42px); border-top-width: 2px;
+  }
+
+  /* ---------- Painel e formulários ---------- */
+  .panel { padding: 16px 14px 24px; margin-top: 18px; min-height: 0; }
+  .panel h2 { font-size: 32px; }
+  .panel .intro { font-size: 16px; }
+  .field label { font-size: 18px; }
+  .field input, .field select { height: 50px; font-size: 16px; } /* 16px evita zoom no iOS */
+  .field textarea { height: 170px; font-size: 16px; }
+  .actions, .actions.wide { gap: 12px; margin-top: 24px; padding: 0; }
+  .actions .btn { flex: 1; min-width: 0; height: 52px; }
+
+  /* Serviços */
+  .svc-grid { grid-template-columns: 1fr; gap: 14px; }
+  .toggle-row { max-width: none; font-size: 19px; padding: 11px 0; }
+  .comp-search { max-width: none; }
+  .comp-search input { height: 52px; font-size: 16px; }
+  .comp-list li button { padding: 14px 18px; }
+
+  /* ---------- Meus chamados ---------- */
+  .filters { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+  .filter { min-width: 0; height: 52px; font-size: 15px; }
+  .new-row { justify-content: stretch; }
+  .new-row .btn { width: 100%; height: 52px; }
+
+  /* Tabelas viram cartões */
+  .table-wrap { overflow: visible; margin-top: 16px; }
+  table, table tbody { display: block; min-width: 0; width: 100%; }
+  table thead { display: none; }
+  table tbody tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 12px;
+  }
+  table td { display: block; height: auto; min-height: 0; padding: 8px 10px; font-size: 15px; text-align: left; border: 0 !important; }
+  table td.c-id, table td.c-desc, table td.c-date { background: #fff; }
+
+  /* cliente */
+  table:not(.emp) tbody tr { grid-template-areas: "desc desc" "id date" "status act"; }
+  table:not(.emp) td.c-desc { grid-area: desc; font-size: 17px; font-weight: 600; width: auto; }
+  table:not(.emp) td.c-id { grid-area: id; width: auto; }
+  table:not(.emp) td.c-date { grid-area: date; }
+  table:not(.emp) td.c-status { grid-area: status; text-align: center; font-weight: 600; align-self: stretch; display: grid; place-items: center; }
+  table:not(.emp) td.c-act { grid-area: act; }
+  td.c-act { padding: 0; border-radius: 8px; overflow: hidden; }
+  td.c-act button, table.emp td.c-act a { min-height: 48px; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+
+  /* empresa */
+  table.emp tbody tr { grid-template-areas: "cli cli" "id date" "tec orc" "st st" "act act"; }
+  table.emp td:nth-child(1) { grid-area: id; width: auto; }
+  table.emp td:nth-child(2) { grid-area: cli; font-weight: 600; font-size: 16px; }
+  table.emp td:nth-child(3) { grid-area: date; }
+  table.emp td:nth-child(4) { grid-area: tec; }
+  table.emp td:nth-child(5) { grid-area: st; padding: 0; background: none; }
+  table.emp td:nth-child(6) { grid-area: orc; }
+  table.emp td:nth-child(7) { grid-area: act; }
+  table.emp td.c-st select { height: 48px; font-size: 16px; }
+  table.emp td.c-tec::before { content: "Técnico: "; color: #555; font-size: 12px; display: block; }
+  table.emp td:nth-child(6)::before { content: "Orçamento: "; color: #555; font-size: 12px; display: block; }
+  table.emp td:nth-child(3)::before { content: "Data: "; color: #555; font-size: 12px; display: block; }
+
+  table td.empty { grid-area: auto !important; grid-column: 1 / -1 !important; text-align: center; background: none; }
+
+  /* ---------- Modal como "bottom sheet" ---------- */
+  .modal { padding: 0; place-items: end center; }
+  .modal-box {
+    max-width: none;
+    border-radius: 18px 18px 0 0;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 22px 18px calc(22px + env(safe-area-inset-bottom));
+  }
+  .modal-box h3 { font-size: 30px; }
+  .modal-box .btn { height: 52px; }
+
+  /* Aviso acima da barra inferior */
+  .toast { bottom: calc(84px + env(safe-area-inset-bottom)); max-width: calc(100% - 32px); text-align: center; }
+
+  /* ---------- Área da empresa ---------- */
+  .login-wrap { padding: 16px; align-items: start; padding-top: 8vh; }
+  .login-card { padding: 24px 20px; }
+  .login-card h1 { font-size: 32px; }
+  .login-card .field label { font-size: 18px; }
+
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 18px; }
+  .stat { padding: 14px; }
+  .stat b { font-size: 40px; }
+  .grid2 { gap: 16px; margin-top: 20px; }
+  .box { padding: 16px; }
+  .box h2 { font-size: 26px; }
+  .queue li { padding: 12px; }
+  .queue li .info { min-width: 0; flex: 1 1 100%; }
+  .mini { height: 42px; flex: 1; justify-content: center; }
+  .bar-row { grid-template-columns: 92px 1fr 24px; }
+
+  .toolbar { gap: 10px; margin-top: 16px; }
+  .toolbar input { flex: 1 1 100%; min-width: 0; font-size: 16px; }
+  .toolbar select { flex: 1 1 calc(50% - 5px); min-width: 0; font-size: 16px; }
+  .toolbar .btn { flex: 1 1 100%; width: 100%; }
+
+  .detail { gap: 16px; }
+  .mgmt .field select, .mgmt .field input { height: 50px; font-size: 16px; }
+  .mgmt .field textarea { font-size: 16px; }
+  .mgmt .row .btn { flex: 1; min-width: 0 !important; height: 52px; }
+}
+
+/* Telas bem pequenas */
+@media (max-width: 380px) {
+  .cards { grid-template-columns: 1fr; }
+  .page-title { font-size: 32px; }
+  .step .label { font-size: 9px; }
+  .nav > a, .nav > button, body.empresa .nav > a, body.empresa .nav > button { font-size: 11px; }
+}
